@@ -1,54 +1,52 @@
 import math
 
+# CLASS: ParkedCar
+# PURPOSE: Store and provide car information
+
 class ParkedCar:
-    """Represents a parked car with vehicle information and parking duration."""
-    
     def __init__(self, make, model, color, license_number, minutes_parked):
-        """
-        Initialize a parked car.
         
-        Args:
-            make: Vehicle make (e.g., Toyota)
-            model: Vehicle model (e.g., Camry)
-            color: Vehicle color (e.g., Red)
-            license_number: License plate number
-            minutes_parked: Number of minutes the car has been parked
-        """
-        self.make = make
-        self.model = model
-        self.color = color
-        self.license_number = license_number
-        self.minutes_parked = minutes_parked
+        # Initialize car details with required attributes
+        self.__make = make
+        self.__model = model
+        self.__color = color
+        self.__license_number = license_number
+        self.__minutes_parked = minutes_parked
     
     def get_make(self):
-        return self.make
+        # RETURN car make
+        return self.__make
     
     def get_model(self):
-        return self.model
+        # RETURN car model
+        return self.__model
     
     def get_color(self):
-        return self.color
+        # RETURN car color
+        return self.__color
     
     def get_license_number(self):
-        return self.license_number
+        # RETURN license number
+        return self.__license_number
     
     def get_minutes_parked(self):
-        return self.minutes_parked
+        # RETURN minutes parked
+        return self.__minutes_parked
+
     
-"""Represents a parking meter that tracks purchased parking time."""
+# CLASS: ParkingMeter
+# PURPOSE: Store purchased parking time of meter
 
 class ParkingMeter:
-     def __init__(self, minutes_purchased):
-        """
-        Initialize a parking meter.
+    def __init__(self, minutes_purchased):
         
-        Args:
-            minutes_purchased: Number of minutes of parking time purchased
-        """
-        self.minutes_purchased = minutes_purchased
+        # Store purchased parking time in minutes
+        self.__minutes_purchased = minutes_purchased
     
-     def get_minutes_purchased(self):
-        return self.minutes_purchased
+    def get_minutes_purchased(self):
+        # RETURN purchased minutes
+        return self.__minutes_purchased
+
 
 """
 Initialize a parking meter.
