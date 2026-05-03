@@ -93,3 +93,18 @@ class ParkingTicket:
             return 25
         else:
             return 25 + (hours_over - 1) * 10
+"""Display the parking ticket information."""
+        
+def display(self):
+        print("=" * 60)
+        print("PARKING TICKET")
+        print("=" * 60)
+        print(f"Vehicle: {self.car.get_make()} {self.car.get_model()}")
+        print(f"Color: {self.car.get_color()}")
+        print(f"License Plate: {self.car.get_license_number()}")
+        print(f"Minutes Parked: {self.car.get_minutes_parked()}")
+        print(f"Minutes Over Limit: {self.minutes_over}")
+        print(f"Fine: ${self.fine}")
+        print(f"Issuing Officer: {self.officer_name}, Badge #{self.officer_badge}")
+        print("=" * 60)
+        print()
