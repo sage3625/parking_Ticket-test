@@ -108,3 +108,40 @@ def display(self):
         print(f"Issuing Officer: {self.officer_name}, Badge #{self.officer_badge}")
         print("=" * 60)
         print()
+"""Represents a police officer who inspects parked cars for violations."""
+def __init__(self, name, badge_number):
+        """
+        Initialize a police officer.
+        
+        Args:
+            name: Officer's name
+            badge_number: Officer's badge number
+        """
+        self.name = name
+        self.badge_number = badge_number
+    
+    def get_name(self):
+        return self.name
+    
+    def get_badge_number(self):
+        return self.badge_number
+    
+    def run_inspection(self, car, meter):
+        """
+        Inspect a parked car and its meter for violations.
+        
+        Args:
+            car: ParkedCar object to inspect
+            meter: ParkingMeter object associated with the car
+        
+        Returns:
+            ParkingTicket object if violation found, None otherwise
+        """
+        minutes_parked = car.get_minutes_parked()
+        minutes_purchased = meter.get_minutes_purchased()
+        
+        if minutes_parked > minutes_purchased:
+            minutes_over = minutes_parked - minutes_purchased
+            return ParkingTicket(car, minutes_over, self.name, self.badge_number)
+        
+        return None
