@@ -151,3 +151,81 @@ class PoliceOfficer:
 
 # Test Driver Program
 if __name__ == "__main__":
+    # PRINT system header
+    print("PARKING TICKET SYSTEM TEST")
+    print("=" * 50)
+    
+    
+    # Scenario 1: Car is Legally Parked
+    # CREATE car, meter, officer for each scenario
+    # RUN inspection
+    # IF no ticket → print legal message
+    print("\nSCENARIO 1: CAR IS LEGALLY PARKED")
+    print("-" * 50)
+    car1 = ParkedCar("Toyota", "Camry", "Red", "XYZ123", 30)
+    meter1 = ParkingMeter(40)
+    officer1 = PoliceOfficer("John Doe", 5678)
+    
+    ticket1 = officer1.run_inspection(car1, meter1)
+    
+    if ticket1 is None:
+        print("Car is legally parked. No ticket issued.")
+    else:
+        ticket1.display_ticket()
+    
+    
+    # Scenario 2: Less Than 1 Hour Over
+    
+    print("\nSCENARIO 2: LESS THAN 1 HOUR OVER")
+    print("-" * 50)
+    car2 = ParkedCar("Honda", "Accord", "Blue", "ABC987", 70)
+    meter2 = ParkingMeter(60)
+    officer2 = PoliceOfficer("Jane Smith", 1234)
+    
+    ticket2 = officer2.run_inspection(car2, meter2)
+    
+    if ticket2 is None:
+        print("Car is legally parked.")
+    else:
+        ticket2.display_ticket()
+    
+    
+    # Scenario 3: Multiple Hours Over
+    
+    print("\nSCENARIO 3: MULTIPLE HOURS OVER")
+    print("-" * 50)
+    car3 = ParkedCar("Ford", "Mustang", "Black", "LMN456", 190)
+    meter3 = ParkingMeter(60)
+    officer3 = PoliceOfficer("James Brown", 4321)
+    
+    ticket3 = officer3.run_inspection(car3, meter3)
+    
+    if ticket3 is None:
+        print("Car is legally parked.")
+    else:
+        ticket3.display_ticket()
+    
+    
+    # Scenario 4: Multiple Cars (Aggregation)
+    # CREATE list of car-meter pairs
+    # LOOP through list and inspect each
+    print("\nSCENARIO 4: MULTIPLE CARS INSPECTION (AGGREGATION)")
+    print("=" * 50)
+    officer4 = PoliceOfficer("Sarah Green", 9999)
+    
+    cars_and_meters = [
+        (ParkedCar("BMW", "320i", "White", "BMW001", 45), ParkingMeter(60)),
+        (ParkedCar("Chevrolet", "Malibu", "Silver", "CHV002", 120), ParkingMeter(60)),
+        (ParkedCar("Tesla", "Model 3", "Black", "TSL003", 30), ParkingMeter(45)),
+        (ParkedCar("Volkswagen", "Jetta", "Gray", "VW004", 180), ParkingMeter(90)),
+        (ParkedCar("Mazda", "3", "Red", "MZD005", 60), ParkingMeter(120)),
+    ]
+    
+    officer4.inspect_multiple(cars_and_meters)
+    
+    # PRINT total tickets issued
+    print(f"\nTotal Tickets Issued by Officer {officer4._PoliceOfficer__name}: {officer4.get_tickets_issued()}")
+    
+    print("\n" + "=" * 50)
+    print("END OF PROGRAM")
+    print("=" * 50)
