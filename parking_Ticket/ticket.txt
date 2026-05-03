@@ -58,7 +58,7 @@ Initialize a parking meter.
         """
 
  """Represents a parking ticket issued for a parking violation."""
-    
+class ParkingTicket:    
     def __init__(self, car, minutes_over, officer_name, officer_badge):
         """
         Initialize a parking ticket.
@@ -69,3 +69,26 @@ Initialize a parking meter.
             officer_name: Name of the issuing officer
             officer_badge: Badge number of the issuing officer
         """
+        self.car = car
+        self.minutes_over = minutes_over
+        self.officer_name = officer_name
+        self.officer_badge = officer_badge
+        self.fine = self._calculate_fine()
+    
+    def _calculate_fine(self):
+        """
+        Calculate the parking fine based on minutes over the limit.
+        
+        Fine structure:
+        - $25 for the first hour or part of an hour
+        - $10 for each additional hour or part of an hour
+        
+        Returns:
+            The calculated fine amount
+        """
+        hours_over = math.ceil(self.minutes_over / 60)
+        
+        if hours_over <= 1:
+            return 25
+        else:
+            return 25 + (hours_over - 1) * 10
