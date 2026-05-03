@@ -1,0 +1,36 @@
+import math
+
+class ParkedCar:
+    """Represents a parked car with vehicle information and parking duration."""
+    
+    def __init__(self, make, model, color, license_number, minutes_parked):
+        """
+        Initialize a parked car.
+        
+        Args:
+            make: Vehicle make (e.g., Toyota)
+            model: Vehicle model (e.g., Camry)
+            color: Vehicle color (e.g., Red)
+            license_number: License plate number
+            minutes_parked: Number of minutes the car has been parked
+        """
+        self.make = make
+        self.model = model
+        self.color = color
+        self.license_number = license_number
+        self.minutes_parked = minutes_parked
+    
+    def get_make(self):
+        return self.make
+    
+    def get_model(self):
+        return self.model
+    
+    def get_color(self):
+        return self.color
+    
+    def get_license_number(self):
+        return self.license_number
+    
+    def get_minutes_parked(self):
+        return self.minutes_parked
