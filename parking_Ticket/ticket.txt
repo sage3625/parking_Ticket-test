@@ -93,9 +93,9 @@ class ParkingTicket:
             return 25
         else:
             return 25 + (hours_over - 1) * 10
-"""Display the parking ticket information."""
-        
-def display(self):
+    
+    def display(self):
+        """Display the parking ticket information."""
         print("=" * 60)
         print("PARKING TICKET")
         print("=" * 60)
@@ -108,8 +108,9 @@ def display(self):
         print(f"Issuing Officer: {self.officer_name}, Badge #{self.officer_badge}")
         print("=" * 60)
         print()
-"""Represents a police officer who inspects parked cars for violations."""
-def __init__(self, name, badge_number):
+class PoliceOfficer:
+    """Represents a police officer who inspects parked cars for violations."""
+    def __init__(self, name, badge_number):
         """
         Initialize a police officer.
         
