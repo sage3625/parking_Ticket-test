@@ -38,8 +38,17 @@ class ParkedCar:
 """Represents a parking meter that tracks purchased parking time."""
 
 class ParkingMeter:
-    def __init__(self, minutes_purchased):  
+     def __init__(self, minutes_purchased):
+        """
+        Initialize a parking meter.
         
+        Args:
+            minutes_purchased: Number of minutes of parking time purchased
+        """
+        self.minutes_purchased = minutes_purchased
+    
+    def get_minutes_purchased(self):
+        return self.minutes_purchased
 
 """
 Initialize a parking meter.
