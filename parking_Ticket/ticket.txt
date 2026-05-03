@@ -48,64 +48,46 @@ class ParkingMeter:
         return self.__minutes_purchased
 
 
-"""
-Initialize a parking meter.
-        
-        Args:
-            minutes_purchased: Number of minutes of parking time purchased
-        """
+# CLASS: ParkingTicket
+# PURPOSE: Represent and display a violation
 
-"""Represents a parking ticket issued for a parking violation."""
-
-class ParkingTicket:    
+class ParkingTicket:
     def __init__(self, car, minutes_over, officer_name, officer_badge):
-        """
-        Initialize a parking ticket.
         
-        Args:
-            car: ParkedCar object
-            minutes_over: Number of minutes the car was parked over the limit
-            officer_name: Name of the issuing officer
-            officer_badge: Badge number of the issuing officer
-        """
-        self.car = car
-        self.minutes_over = minutes_over
-        self.officer_name = officer_name
-        self.officer_badge = officer_badge
-        self.fine = self._calculate_fine()
+        # Store ticket details and calculate fine
+        self.__car = car
+        self.__minutes_over = minutes_over
+        self.__officer_name = officer_name
+        self.__officer_badge = officer_badge
+        self.__fine = self.calculate_fine()
     
-    def _calculate_fine(self):
-        """
-        Calculate the parking fine based on minutes over the limit.
+    def calculate_fine(self):
         
-        Fine structure:
-        - $25 for the first hour or part of an hour
-        - $10 for each additional hour or part of an hour
-        
-        Returns:
-            The calculated fine amount
-        """
-        hours_over = math.ceil(self.minutes_over / 60)
+        # hours_over = CEILING(minutes_over / 60)
+        # IF hours_over <= 1 → fine = 25
+        # ELSE → fine = 25 + (hours_over - 1) * 10
+        hours_over = math.ceil(self.__minutes_over / 60)
         
         if hours_over <= 1:
             return 25
         else:
             return 25 + (hours_over - 1) * 10
     
-    def display(self):
-        """Display the parking ticket information."""
-        print("=" * 60)
+    def display_ticket(self):
+        
+        # PRINT all ticket details including car info and fine
         print("PARKING TICKET")
-        print("=" * 60)
-        print(f"Vehicle: {self.car.get_make()} {self.car.get_model()}")
-        print(f"Color: {self.car.get_color()}")
-        print(f"License Plate: {self.car.get_license_number()}")
-        print(f"Minutes Parked: {self.car.get_minutes_parked()}")
-        print(f"Minutes Over Limit: {self.minutes_over}")
-        print(f"Fine: ${self.fine}")
-        print(f"Issuing Officer: {self.officer_name}, Badge #{self.officer_badge}")
-        print("=" * 60)
-        print()
+        print(f"Make: {self.__car.get_make()}")
+        print(f"Model: {self.__car.get_model()}")
+        print(f"Color: {self.__car.get_color()}")
+        print(f"License Number: {self.__car.get_license_number()}")
+        print(f"Minutes Parked: {self.__car.get_minutes_parked()}")
+        print(f"Minutes Over Limit: {self.__minutes_over}")
+        print(f"Fine Amount: ${self.__fine}")
+        print(f"Officer Name: {self.__officer_name}")
+        print(f"Officer Badge: {self.__officer_badge}")
+        print("-" * 50)
+
 class PoliceOfficer:
     """Represents a police officer who inspects parked cars for violations."""
     def __init__(self, name, badge_number):
