@@ -34,3 +34,29 @@ class ParkedCar:
     
     def get_minutes_parked(self):
         return self.minutes_parked
+    
+"""Represents a parking meter that tracks purchased parking time."""
+
+class ParkingMeter:
+    def __init__(self, minutes_purchased):  
+        
+
+"""
+Initialize a parking meter.
+        
+        Args:
+            minutes_purchased: Number of minutes of parking time purchased
+        """
+
+ """Represents a parking ticket issued for a parking violation."""
+    
+    def __init__(self, car, minutes_over, officer_name, officer_badge):
+        """
+        Initialize a parking ticket.
+        
+        Args:
+            car: ParkedCar object
+            minutes_over: Number of minutes the car was parked over the limit
+            officer_name: Name of the issuing officer
+            officer_badge: Badge number of the issuing officer
+        """
