@@ -88,48 +88,66 @@ class ParkingTicket:
         print(f"Officer Badge: {self.__officer_badge}")
         print("-" * 50)
 
+
+
+# CLASS: PoliceOfficer
+# PURPOSE: Inspect cars and issue tickets
+
 class PoliceOfficer:
-    """Represents a police officer who inspects parked cars for violations."""
     def __init__(self, name, badge_number):
-        """
-        Initialize a police officer.
         
-        Args:
-            name: Officer's name
-            badge_number: Officer's badge number
-        """
-        self.name = name
-        self.badge_number = badge_number
-    
-    def get_name(self):
-        return self.name
-    
-    def get_badge_number(self):
-        return self.badge_number
+        # Initialize officer details and ticket list
+        self.__name = name
+        self.__badge_number = badge_number
+        self.__tickets_issued = []
     
     def run_inspection(self, car, meter):
-        """
-        Inspect a parked car and its meter for violations.
         
-        Args:
-            car: ParkedCar object to inspect
-            meter: ParkingMeter object associated with the car
-        
-        Returns:
-            ParkingTicket object if violation found, None otherwise
-        """
+        # GET minutes_parked from car
+        # GET minutes_purchased from meter
+        # IF parked > purchased:
+        #     CALCULATE minutes_over
+        #     CREATE ParkingTicket
+        #     STORE ticket
+        #     RETURN ticket
+        # ELSE:
+        #     RETURN None
         minutes_parked = car.get_minutes_parked()
         minutes_purchased = meter.get_minutes_purchased()
         
         if minutes_parked > minutes_purchased:
             minutes_over = minutes_parked - minutes_purchased
-            return ParkingTicket(car, minutes_over, self.name, self.badge_number)
+            ticket = ParkingTicket(car, minutes_over, self.__name, self.__badge_number)
+            self.__tickets_issued.append(ticket)
+            return ticket
+        else:
+            return None
+    
+    def inspect_multiple(self, cars_and_meters):
         
-        return None
+        # FOR each car and meter pair:
+        #     CALL run_inspection
+        #     IF no ticket → print legal message
+        #     ELSE → print violation and display ticket
+        print(f"\nOfficer {self.__name} (Badge: {self.__badge_number}) Inspecting Multiple Vehicles")
+        print("=" * 50)
+        
+        for car, meter in cars_and_meters:
+            ticket = self.run_inspection(car, meter)
+            
+            if ticket is None:
+                print(f" {car.get_make()} {car.get_model()} ({car.get_license_number()}) - Car is legally parked.")
+                print("-" * 50)
+            else:
+                print(f"VIOLATION DETECTED - {car.get_make()} {car.get_model()}")
+                ticket.display_ticket()
+    
+    def get_tickets_issued(self):
+        # RETURN total number of tickets issued
+        return len(self.__tickets_issued)
+
+
 
 
 # Test Driver Program
 if __name__ == "__main__":
-    print("\n" + "=" * 60)
-    print("PARKING TICKET SYSTEM - TEST SCENARIOS")
-    print("=" * 60 + "\n")
