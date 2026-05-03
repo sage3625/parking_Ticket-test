@@ -145,3 +145,10 @@ def __init__(self, name, badge_number):
             return ParkingTicket(car, minutes_over, self.name, self.badge_number)
         
         return None
+
+
+# Test Driver Program
+if __name__ == "__main__":
+    print("\n" + "=" * 60)
+    print("PARKING TICKET SYSTEM - TEST SCENARIOS")
+    print("=" * 60 + "\n")
