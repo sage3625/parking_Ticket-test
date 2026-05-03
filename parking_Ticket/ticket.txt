@@ -47,7 +47,7 @@ class ParkingMeter:
         """
         self.minutes_purchased = minutes_purchased
     
-    def get_minutes_purchased(self):
+     def get_minutes_purchased(self):
         return self.minutes_purchased
 
 """
@@ -57,7 +57,8 @@ Initialize a parking meter.
             minutes_purchased: Number of minutes of parking time purchased
         """
 
- """Represents a parking ticket issued for a parking violation."""
+"""Represents a parking ticket issued for a parking violation."""
+
 class ParkingTicket:    
     def __init__(self, car, minutes_over, officer_name, officer_badge):
         """
